@@ -9,7 +9,7 @@ namespace PlayerManagerMVC
        public IEnumerable<Player> GetPlayersWithScoreGreaterThan(int minScore)
         {
             // Cycle all players in the original player list
-            foreach (Player p in playerList)
+            foreach (Player p in this)
             {
                 // If the current player has a score higher than the
                 // given value....

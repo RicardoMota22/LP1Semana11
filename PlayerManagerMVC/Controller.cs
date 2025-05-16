@@ -23,17 +23,17 @@ namespace PlayerManagerMVC
         
         private Controller(Iview view,
         PlayersList playerList,
-        Icomparer<Player> compareByName,
-        Icomparer<Player> compareByNameReverse)
+        IComparer<Player> compareByName,
+        IComparer<Player> compareByNameReverse)
         {
             // Initialize the view and player list
-            this.view = view;
+            
             this.playerList = playerList;
             this.compareByName = compareByName;
             this.compareByNameReverse = compareByNameReverse;
         }
         
-            {
+        
             // Initialize player comparers
             compareByName = new CompareByName(true);
             compareByNameReverse = new CompareByName(false);
@@ -45,13 +45,14 @@ namespace PlayerManagerMVC
                 new Player("An even better player", 500)
             };
 
-        }
+        
 
         /// <summary>
         /// Start the player listing program instance
         /// </summary>
-        private void Run(Iview view)
+        public void Run(Iview view)
         {
+            this.view = view;
             // We keep the user's option here
             string option;
 
@@ -102,7 +103,7 @@ namespace PlayerManagerMVC
         /// </summary>
         private void InsertPlayer()
         {
-            Player newPlayer = view.AskforPlayerInfo(playerList);
+            Player newPlayer = view.AskForPlayerInfo(playerList);
             playerList.Add(newPlayer);
         }
 
@@ -134,7 +135,7 @@ namespace PlayerManagerMVC
         private void ListPlayersWithScoreGreaterThan()
         {
             // Minimum score user should have in order to be shown
-            int minScore = view.AskforMinScore();
+            int minScore = view.AskForMinScore();
             // Enumerable of players with score higher than the minimum score
             IEnumerable<Player> playersWithScoreGreaterThan;
 

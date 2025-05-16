@@ -25,8 +25,8 @@ namespace PlayerManagerMVC
         Controller controller = new Controller(playerList, compareByName,
             compareByNameReverse);
 
-        Iview view = new Uglyview();
-        controller.Run(view);
+        IView view = new UglyView();
+        controller.Run(view)
 
     }
 }
