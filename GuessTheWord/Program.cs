@@ -1,13 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using GuessTheWord;
 
 public class Program
 {
-    Board board = new Board();
-    Controller controller = new Controller(board);
-    IView view = new UglyView();
+    
     private static void Main()
     {
+        Board board = new Board();
+        Controller controller = new Controller(board);
+        IView view = new UglyView();
 
         IDictionary<string, string> wordsWithHints = new Dictionary<string, string>()
         {
@@ -46,8 +48,7 @@ public class Program
         string guess;
         do
         {
-            Console.Write("Your guess: ");
-            guess = Console.ReadLine().Trim().ToLower();
+            view.PlayerGuess();
 
             if (guess != chosenWord)
                 view.IncorrectGuess();

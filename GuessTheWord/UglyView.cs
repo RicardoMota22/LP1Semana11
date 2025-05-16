@@ -1,28 +1,19 @@
+
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.Runtime.CompilerServices;
+using System.Security.Cryptography.X509Certificates;
+
 
 
 namespace GuessTheWord
 {
     public class UglyView : IView
     {
-        public string DictionaryMenu()
-        {
-            { "apple", "fruit" },
-            { "banana", "fruit" },
-            { "tiger", "animal" },
-            { "elephant", "animal" },
-            { "guitar", "instrument" },
-            { "violin", "instrument" },
-            { "canada", "country" },
-            { "brazil", "country" },
-            { "laptop", "object" },
-            { "microscope", "scientific instrument" }
-        }
+
         public void GuessWord()
         {
+            string hint;
             Console.WriteLine("Guess the full word!");
             Console.WriteLine($"Hint: It's a {hint}.");
             Console.WriteLine($"Word: {new string(display)}");
@@ -30,6 +21,7 @@ namespace GuessTheWord
 
         public void CorrectGuess()
         {
+            string chosenWord;
             Console.WriteLine("Correct! Well done!");
             Console.WriteLine($"The word was \"{chosenWord}\".");
         }
@@ -37,6 +29,13 @@ namespace GuessTheWord
         public void IncorrectGuess()
         {
             Console.WriteLine("Incorrect. Try again.");
+        }
+
+        public void PlayerGuess()
+        {
+            string guess;
+            Console.Write("Your guess: ");
+            guess = Console.ReadLine().Trim().ToLower();
         }
     }
 }

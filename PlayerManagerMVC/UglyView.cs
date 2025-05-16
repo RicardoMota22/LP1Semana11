@@ -7,7 +7,7 @@ namespace PlayerManagerMVC
 {
     public class UglyView : IView
     {
-        public Player AskforPlayerInfo()
+        public Player AskForPlayerInfo()
         {
             // Variables
             string name;
@@ -67,7 +67,7 @@ namespace PlayerManagerMVC
             Console.WriteLine("\n");
         }
 
-        public int AskforMinScore()
+        public int AskForMinScore()
         {
             Console.Write("Insert minimum score: ");
             return Convert.ToInt32(Console.ReadLine());
