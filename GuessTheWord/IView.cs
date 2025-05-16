@@ -8,5 +8,8 @@ namespace GuessTheWord
     public interface IView
     {
         void DictionaryMenu();
+        void GuessWord();
+        void CorrectGuess();
+        void IncorrectGuess();
     }
 }

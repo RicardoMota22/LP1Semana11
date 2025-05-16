@@ -3,20 +3,15 @@ using System.Collections.Generic;
 
 public class Program
 {
+    Board board = new Board();
+    Controller controller = new Controller(board);
+    IView view = new UglyView();
     private static void Main()
     {
+
         IDictionary<string, string> wordsWithHints = new Dictionary<string, string>()
         {
-            { "apple", "fruit" },
-            { "banana", "fruit" },
-            { "tiger", "animal" },
-            { "elephant", "animal" },
-            { "guitar", "instrument" },
-            { "violin", "instrument" },
-            { "canada", "country" },
-            { "brazil", "country" },
-            { "laptop", "object" },
-            { "microscope", "scientific instrument" }
+            view.DictionaryMenu();
         };
 
         // Select a random word
@@ -46,9 +41,7 @@ public class Program
             display[i] = chosenWord[i];
         }
 
-        Console.WriteLine("Guess the full word!");
-        Console.WriteLine($"Hint: It's a {hint}.");
-        Console.WriteLine($"Word: {new string(display)}");
+        view.GuessWord();
 
         string guess;
         do
@@ -57,10 +50,11 @@ public class Program
             guess = Console.ReadLine().Trim().ToLower();
 
             if (guess != chosenWord)
-                Console.WriteLine("Incorrect. Try again.");
+                view.IncorrectGuess();
         } while (guess != chosenWord);
 
-        Console.WriteLine("Correct! Well done!");
-        Console.WriteLine($"The word was \"{chosenWord}\".");
+        view.CorrectGuess();
+
+        Controller.Run(view);
     }
 }
