@@ -23,8 +23,7 @@ namespace PlayerManagerMVC
             score = Convert.ToInt32(Console.ReadLine());
 
             // Create new player and add it to list
-            newPlayer = new Player(name, score);
-            playerList.Add(newPlayer);
+            return new Player(name, score);
         }
         public void ShowInvalidOptionMessage()
         {
@@ -55,5 +54,40 @@ namespace PlayerManagerMVC
             Console.Write("Your choice > ");
             return Console.ReadLine();
         }
+        public void ShowPlayers(IEnumerable<Player> playersToList)
+        {
+            Console.WriteLine("\nList of players");
+            Console.WriteLine("-------------\n");
+
+            // Show each player in the enumerable object
+            foreach (Player p in players)
+            {
+                Console.WriteLine($" -> {p.Name} with a score of {p.Score}");
+            }
+            Console.WriteLine("\n");
+        }
+
+        public int AskforMinScore()
+        {
+            Console.Write("Insert minimum score: ");
+            return Convert.ToInt32(Console.ReadLine());
+        }
+
+        public PlayerOrder AskForPlayerOrder()
+        {
+            Console.WriteLine("Player order");
+            Console.WriteLine("------------");
+            Console.WriteLine(
+                $"{(int)PlayerOrder.ByScore}. Order by score");
+            Console.WriteLine(
+                $"{(int)PlayerOrder.ByName}. Order by name");
+            Console.WriteLine(
+                $"{(int)PlayerOrder.ByNameReverse}. Order by name (reverse)");
+            Console.WriteLine("");
+            Console.Write("> ");
+
+            return Enum.Parse<PlayerOrder>(Console.ReadLine());
+        }
     }
+    
 }
